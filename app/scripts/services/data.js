@@ -3,10 +3,7 @@
 var angular = require('angular');
 
 angular.module('resourceApp')
-.service('dataService', ['$http', function($http) {
-	this.helloConsole = function() {
-		console.log('This the the helloConsole service.');
-	};
+.service('dataService', ['$http', function($http, $q) {
 
 	this.getResources = function(callback) {
 		$http.get('/api/resources')
@@ -18,7 +15,17 @@ angular.module('resourceApp')
 	};
 
 	this.saveResources = function(resources) {
-		console.log(resources.length + " resource have been saved!");
+		var queue = [];
+		resources.forEach(function(resource) {
+			var request;
+			if(!resource._id) {
+				request = $http.post('/api/resources', resource)
+			};
+			queue.push(request);
+		});
+		return $q.all(queue).then(function(results) {
+			console.log("I saved " + resources.length + " resources!");
+		});
 	}
 
 }]);

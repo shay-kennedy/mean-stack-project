@@ -31,7 +31,14 @@ angular.module('resourceApp')
 				return resource;
 			};
 		})
-		dataService.saveResources(filteredResources);
+		dataService.saveResources(filteredResources)
+		.finally($scope.resetResourceState());
+	};
+
+	$scope.resetResourceState = function() {
+		$scope.resources.forEach(function(resource) {
+			resource.edited = false;
+		});
 	};
 
 }])

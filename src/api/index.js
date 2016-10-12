@@ -1,17 +1,43 @@
 'use strict';
 
 var express = require('express');
-var resources = require('../../mock/items.json');
+var Resource = require('../models/resource');
+// var resources = require('../../mock/items.json');
 
 var router = express.Router();
 
 router.get('/resources', function(req, res) {
-	res.json({resources: resources});
+	Resource.find({}, function(err, resources) {
+		if(err) {
+			return res.status(500).json({err: err.message});
+		}
+		res.json({resources: resources});
+	});
 });
 
-// TODO: Add POST route to create new entries
+router.post('/resources', function(req, res) {
+	var resource = req.body;
+	Resource.create(resource, function(err, resource) {
+		if(err) {
+			return res.status(500).json({err: err.message});
+		}
+		res.send({'resource': resource, message: 'Resource Created'});
+	});	
+});
 
-// TODO: Add PUT route to update existing entries
+router.put('/resources/:id', function(req, res) {
+	var id = req.params.id;
+	var resource = req.body;
+	if(resource && resource._id !== id) {
+		return res.status(500).json({err: "Id's don't match!"})
+	}
+	Resource.findByIdAndUpdate(id, resource, {new: true}, function(err, resource) {
+		if(err) {
+			return res.status(500).json({err: err.message});
+		}
+		res.send({'resource': resource, message: 'Resource Updated'});
+	});	
+});
 
 // TODO: Add DELETE route to delete entries
 

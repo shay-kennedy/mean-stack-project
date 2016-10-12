@@ -52,7 +52,14 @@ webpackJsonp([0],[
 					return resource;
 				};
 			})
-			dataService.saveResources(filteredResources);
+			dataService.saveResources(filteredResources)
+			.finally($scope.resetResourceState());
+		};
+
+		$scope.resetResourceState = function() {
+			$scope.resources.forEach(function(resource) {
+				resource.edited = false;
+			});
 		};
 
 	}])
@@ -85,10 +92,7 @@ webpackJsonp([0],[
 	var angular = __webpack_require__(1);
 
 	angular.module('resourceApp')
-	.service('dataService', ['$http', function($http) {
-		this.helloConsole = function() {
-			console.log('This the the helloConsole service.');
-		};
+	.service('dataService', ['$http', function($http, $q) {
 
 		this.getResources = function(callback) {
 			$http.get('/api/resources')
@@ -100,7 +104,17 @@ webpackJsonp([0],[
 		};
 
 		this.saveResources = function(resources) {
-			console.log(resources.length + " resource have been saved!");
+			var queue = [];
+			resources.forEach(function(resource) {
+				var request;
+				if(!resource._id) {
+					request = $http.post('/api/resources', resource)
+				};
+				queue.push(request);
+			});
+			return $q.all(queue).then(function(results) {
+				console.log("I saved " + resources.length + " resources!");
+			});
 		}
 
 	}]);
