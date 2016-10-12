@@ -1,5 +1,7 @@
 'use strict';
 
+var angular = require('angular');
+
 angular.module('resourceApp')
 .service('dataService', ['$http', function($http) {
 	this.helloConsole = function() {
@@ -7,7 +9,7 @@ angular.module('resourceApp')
 	};
 
 	this.getResources = function(callback) {
-		$http.get('../mock/resources.json')
+		$http.get('/api/resources')
 		.then(callback)
 	};
 

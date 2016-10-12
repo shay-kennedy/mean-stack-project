@@ -1,5 +1,7 @@
 'use strict';
 
+var angular = require('angular');
+
 // Custom Directive
 angular.module('resourceApp')
 .directive('resources', function() {
