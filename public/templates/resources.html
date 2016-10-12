@@ -4,7 +4,7 @@
     <a href="" ng-click="addResource()">+ Add a New Resource</a>
   </div>
 
-  <div class="item resource" ng-class="{'editing-item': editing, 'archived': resource.archived, 'edited': resource.edited}" ng-repeat="resource in resources | orderBy: 'archived'" ng-init="resource.archived = false">
+  <div class="item resource" ng-class="{'editing-item': editing, 'archived': resource.archived, 'edited': resource.edited}" ng-repeat="resource in resources | orderBy: 'archived'">
       
     <div class="primary">
       <input ng-model="resource.archived" type="checkbox"/><span ng-click="resource.archived = !resource.archived; resource.edited = true"></span>

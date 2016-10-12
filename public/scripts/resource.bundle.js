@@ -92,7 +92,7 @@ webpackJsonp([0],[
 	var angular = __webpack_require__(1);
 
 	angular.module('resourceApp')
-	.service('dataService', ['$http', function($http, $q) {
+	.service('dataService', ['$http', '$q', function($http, $q) {
 
 		this.getResources = function(callback) {
 			$http.get('/api/resources')
@@ -100,7 +100,12 @@ webpackJsonp([0],[
 		};
 
 		this.deleteResource = function(resource) {
-			console.log("The " + resource.title + " resource has been deleted!");
+			if (!todo._id) {
+				return $q.resolve();
+			}
+			$http.delete('/api/resources/' + resource._id).then(function() {
+				console.log("I deleted the " + resource.title + " resource!");
+			});
 		};
 
 		this.saveResources = function(resources) {
@@ -109,6 +114,11 @@ webpackJsonp([0],[
 				var request;
 				if(!resource._id) {
 					request = $http.post('/api/resources', resource)
+				} else {
+					request = $http.put('/api/resources/' + resource._id, resource).then(function(result) {
+						resource = result.data.resource;
+						return resource;
+					})
 				};
 				queue.push(request);
 			});

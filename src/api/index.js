@@ -39,6 +39,17 @@ router.put('/resources/:id', function(req, res) {
 	});	
 });
 
-// TODO: Add DELETE route to delete entries
+router.delete('/resources/:id', function(req, res) {
+	var id = req.params.id;
+	if(resource._id !== id) {
+		return res.status(500).json({err: "Id's don't match!"})
+	}
+	Resource.remove({'_id': id}, function(err, resource) {
+		if(err) {
+			return res.status(500).json({err: err.message});
+		}
+		res.send({message: 'Resource Deleted'});
+	});	
+});
 
 module.exports = router;
