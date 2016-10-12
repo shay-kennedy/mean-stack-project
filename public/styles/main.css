@@ -7,7 +7,8 @@ body {
 
 a {
   color: #3f8abf;
-  text-decoration: none; }
+  text-decoration: none;
+  margin-left: 10px; }
   a:hover {
     color: #65a1cc; }
 
@@ -43,12 +44,12 @@ a {
     .list .item.editing-item .actions {
       margin-top: 17px; }
   .list .edited label:after {
-    content: " edited";
+    /*content: " edited";*/
     text-transform: uppercase;
     color: #a7b9c4;
     font-size: 14px;
     padding-left: 5px; }
-  .list .completed label {
+  .list .archived label {
     color: #a7b9c4;
     text-decoration: line-through; }
   .list .add {
