@@ -88,3 +88,7 @@ nav ul li a {
   color: #444;
   background-color: #adadad;
 }
+span.category {
+  text-decoration: underline;
+  
+}

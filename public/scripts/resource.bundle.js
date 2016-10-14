@@ -100,7 +100,7 @@ webpackJsonp([0],[
 		};
 
 		this.deleteResource = function(resource) {
-			if (!todo._id) {
+			if (!resource._id) {
 				return $q.resolve();
 			}
 			$http.delete('/api/resources/' + resource._id).then(function() {

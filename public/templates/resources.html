@@ -8,13 +8,13 @@
       
     <div class="primary">
       <input ng-model="resource.archived" type="checkbox"/><span ng-click="resource.archived = !resource.archived; resource.edited = true"></span>
-      <label ng-click="editing = true" ng-hide="editing">Title: {{resource.title}}</label>
+      <label ng-click="editing = true" ng-hide="editing"><span class="category">Title</span>: {{resource.title}}</label>
       <input ng-change="resource.edited = true" ng-blur="editing = false" ng-show="editing" ng-model="resource.title" class="editing-label" type="text" />
-      <label ng-click="editing = true" ng-hide="editing">URL: {{resource.url}}</label>
+      <label ng-click="editing = true" ng-hide="editing"><span class="category">URL</span>: {{resource.url}}</label>
       <input ng-change="resource.edited = true" ng-blur="editing = false" ng-show="editing" ng-model="resource.url" class="editing-label" type="text" />
     </div>
     <div class="notes">
-      <label ng-click="editing = true" ng-hide="editing">Notes: {{resource.notes}}</label>
+      <label ng-click="editing = true" ng-hide="editing"><span class="category">Notes</span>: {{resource.notes}}</label>
       <input ng-change="resource.edited = true" ng-blur="editing = false" ng-show="editing" ng-model="resource.notes" class="editing-label" type="text" />
     </div>
     
