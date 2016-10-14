@@ -8,7 +8,7 @@ angular.module('resourceApp')
 	$scope.addResource = function() {
 		var resource = {
 			title: "Enter title for resource",
-			url: "Enter URL to resource",
+			url: "localhost:8080",
 			notes: "Enter notes about this resource"
 		};
 		$scope.resources.unshift(resource);

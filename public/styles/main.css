@@ -24,7 +24,7 @@ a {
     padding: 17px 0 18px 17px; }
     .list .item label {
       padding-left: 5px;
-      cursor: pointer; }
+      /*cursor: pointer;*/ }
     .list .item .editing-label {
       margin-left: 5px;
       font-family: "Varela Round";
@@ -52,8 +52,11 @@ a {
   .list .archived label {
     color: #d7e0e5;
     /*color: #a7b9c4;*/
-    /*text-decoration: line-through; */
-  }
+    /*text-decoration: line-through; */ }
+    .list .archived a {
+    color: #d7e0e5;
+    /*color: #a7b9c4;*/
+    /*text-decoration: line-through; */ }
   .list .add {
     padding: 25px 0 27px 25px; }
 

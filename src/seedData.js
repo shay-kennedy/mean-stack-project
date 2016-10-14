@@ -4,24 +4,24 @@ var Resource = require('./models/resource.js');
 
 var resources = [
 	{
-	"title": "How to learn MongoDB.",
-	"url": "www.google.com",
-	"notes": "Just some notes about why I bookmarked this resource"
+	"title": "MongoDB Courses",
+	"url": "university.mongodb.com/",
+	"notes": "MongoDB University - list of online courses"
 	},
 	{
-	"title": "How to learn ExpressJS.",
-	"url": "www.google.com",
-	"notes": "Just some notes about why I bookmarked this resource"
+	"title": "ExpressJS tutorial",
+	"url": "www.youtube.com/watch?v=NALxjuyRXaE",
+	"notes": "Beginner Express Star Wars You Tube tutorial"
 	},
 	{
-	"title": "How to learn AngularJS.",
-	"url": "www.google.com",
-	"notes": "Just some notes about why I bookmarked this resource"
+	"title": "AngularJS resources",
+	"url": "docs.angularjs.org/guide",
+	"notes": "Angular 1.x Documentation - developer guide"
 	},
 	{
-	"title": "How to learn NodeJS.",
-	"url": "www.google.com",
-	"notes": "Just some notes about why I bookmarked this resource"
+	"title": "NodeJS meetup",
+	"url": "www.meetup.com/NodeAZ/",
+	"notes": "Local NodeAZ meetup group - meets every 3rd Monday"
 	}
 ];
 

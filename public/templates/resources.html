@@ -4,22 +4,24 @@
     <a href="" ng-click="addResource()">+ Add a New Resource</a>
   </div>
 
-  <div class="item resource" ng-class="{'editing-item': editing, 'archived': resource.archived, 'edited': resource.edited}" ng-repeat="resource in resources | orderBy: 'archived'">
+  <div class="item resource" ng-class="{'archived': resource.archived, 'edited': resource.edited}" ng-repeat="resource in resources | orderBy: 'archived'">
       
     <div class="primary">
       <input ng-model="resource.archived" type="checkbox"/><span ng-click="resource.archived = !resource.archived; resource.edited = true"></span>
-      <label ng-click="editing = true" ng-hide="editing"><span class="category">Title</span>: {{resource.title}}</label>
-      <input ng-change="resource.edited = true" ng-blur="editing = false" ng-show="editing" ng-model="resource.title" class="editing-label" type="text" />
-      <label ng-click="editing = true" ng-hide="editing"><span class="category">URL</span>: {{resource.url}}</label>
-      <input ng-change="resource.edited = true" ng-blur="editing = false" ng-show="editing" ng-model="resource.url" class="editing-label" type="text" />
+      <label ng-hide="editing"><span class="category">Title</span>: <a ng-href="http://{{resource.url}}" target="_blank">{{resource.title}}</a></label>
+      <input ng-change="resource.edited = true" ng-show="editing" ng-model="resource.title" class="editing-label" type="text" />
+      <!-- <label ng-click="editing = true" ng-hide="editing"><span class="category">URL</span>: {{resource.url}}</label> -->
+      <input ng-change="resource.edited = true" ng-show="editing" ng-model="resource.url" class="editing-label" type="text" />
+      <label ng-hide="editing"><span class="category">Notes</span>: {{resource.notes}}</label>
+      <input ng-change="resource.edited = true" ng-show="editing" ng-model="resource.notes" class="editing-label" type="text" maxlength="140" />
     </div>
-    <div class="notes">
-      <label ng-click="editing = true" ng-hide="editing"><span class="category">Notes</span>: {{resource.notes}}</label>
-      <input ng-change="resource.edited = true" ng-blur="editing = false" ng-show="editing" ng-model="resource.notes" class="editing-label" type="text" />
-    </div>
+    <!-- <div class="notes">
+      
+    </div> -->
     
     <div class="actions">
-      <a href="" ng-click="saveResources(resource)">Save</a>
+      <a href="" ng-click="editing = !editing">Edit</a>
+      <a href="" ng-click="saveResources(resource); editing = false">Save</a>
       <a href="" ng-click="deleteResource(resource, $index)" class="delete">Delete</a>
     </div>
   
